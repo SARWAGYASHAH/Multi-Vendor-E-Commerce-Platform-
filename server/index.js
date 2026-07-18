@@ -4,6 +4,9 @@ const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
 require('dotenv').config();
 
+// Route files
+const authRoutes = require('./routes/authRoutes');
+
 const app = express();
 
 // Connect to MongoDB
@@ -25,8 +28,8 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok', message: 'Server is running' });
 });
 
-// TODO: Register API routes
-// TODO: Set up Socket.io
+// API routes registration
+app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 5000;
 
