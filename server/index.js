@@ -8,6 +8,7 @@ require('dotenv').config();
 // Route files
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
 const app = express();
 
@@ -36,6 +37,7 @@ app.get('/api/health', (req, res) => {
 // API routes registration
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/orders', orderRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
